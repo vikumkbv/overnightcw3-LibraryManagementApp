@@ -11,8 +11,8 @@ public class Dvd extends LibraryItem {
     static List<Dvd> DvdData = new ArrayList<>();
 
     public Dvd(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader,
-               String language, String subtitles, Creator producer, String actors) {
-        super(isbn, title, sector, publishDate, borrowedDate, currentReader);
+               String itemType, String language, String subtitles, Creator producer, String actors) {
+        super(isbn, title, sector, publishDate, borrowedDate, currentReader, itemType);
         this.language = language;
         this.subtitles = subtitles;
         this.producer = producer;
@@ -71,6 +71,7 @@ public class Dvd extends LibraryItem {
     public String toString() {
 
         return  "Dvd : "  +
+                "\n Type           = " + itemType +
                 "\n Title          = " + title +
                 "\n ISBN           = " + isbn  +
                 "\n Language       = " + language  +

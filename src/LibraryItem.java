@@ -8,6 +8,7 @@ public abstract class LibraryItem {
     DateTime publishDate;
     DateTime borrowedDate;
     Reader currentReader;
+    String itemType;
     private int itemCount;
 
     static List<LibraryItem> libraryItemsDetails= new ArrayList<>();
@@ -18,13 +19,14 @@ public abstract class LibraryItem {
     }*/
 
     //overloaded constructor
-    LibraryItem(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader) {
+    LibraryItem(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader, String itemType) {
         this.isbn = isbn;
         this.title = title;
         this.sector = sector;
         this.publishDate = publishDate;
         this.borrowedDate = borrowedDate;
         this.currentReader = currentReader;
+        this.itemType = itemType;
         itemCount++;
     }
 

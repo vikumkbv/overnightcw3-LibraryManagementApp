@@ -11,8 +11,8 @@ public class Book extends LibraryItem {
 
 //this constructor is used to pass data to
     public Book(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader,
-                Author author, Publisher publisher, int totalNumberofPages) {
-        super(isbn, title, sector, publishDate, borrowedDate, currentReader);
+                String itemType, Author author, Publisher publisher, int totalNumberofPages) {
+        super(isbn, title, sector, publishDate, borrowedDate, currentReader, itemType);
         this.author = author;
         this.publisher = publisher;
         this.totalNumberofPages = totalNumberofPages;
@@ -60,6 +60,7 @@ public class Book extends LibraryItem {
     @Override
     public String toString() {
         return "Book : " +
+                "\n Type                   = " + itemType +
                 "\n Title                  = " + title +
                 "\n ISBN                   = " + isbn +
                 "\n Author                 = " + author +
@@ -71,4 +72,6 @@ public class Book extends LibraryItem {
                 "\n Current Reader         = " + currentReader +
                 '\n'+'\n';
     }
+
+
 }
