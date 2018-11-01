@@ -27,28 +27,28 @@ public class Dvd extends LibraryItem {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getSubtitles() {
         return subtitles;
-    }
-
-    public void setSubtitles(String subtitles) {
-        this.subtitles = subtitles;
     }
 
     public Creator getProducer() {
         return producer;
     }
 
-    public void setProducer(Creator producer) {
-        this.producer = producer;
-    }
-
     public String getActors() {
         return actors;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setSubtitles(String subtitles) {
+        this.subtitles = subtitles;
+    }
+
+    public void setProducer(Creator producer) {
+        this.producer = producer;
     }
 
     public void setActors(String actors) {

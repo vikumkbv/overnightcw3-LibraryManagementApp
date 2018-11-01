@@ -26,20 +26,20 @@ public class Book extends LibraryItem {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public Publisher getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
-
     public int getTotalNumberofPages() {
         return totalNumberofPages;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 
     public void setTotalNumberofPages(int totalNumberofPages) {
