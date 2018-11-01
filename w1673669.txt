@@ -1,0 +1,897 @@
+=======================================================================================================================
+This is the LibraryItem class
+=======================================================================================================================
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class LibraryItem {
+    String isbn;
+    String title;
+    String sector;
+    DateTime publishDate;
+    DateTime borrowedDate;
+    Reader currentReader;
+    String itemType;
+    private int itemCount;
+
+    static List<LibraryItem> libraryItemsDetails= new ArrayList<>();
+
+    //constructor to update Library item list
+    /*LibraryItem(){
+
+    }
+    }*/
+
+    //overloaded constructor
+    LibraryItem(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader, String itemType) {
+        this.isbn = isbn;
+        this.title = title;
+        this.sector = sector;
+        this.publishDate = publishDate;
+        this.borrowedDate = borrowedDate;
+        this.currentReader = currentReader;
+        this.itemType = itemType;
+        itemCount++;
+    }
+
+
+    public int getItemcount(){
+        return itemCount;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+    public DateTime getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(DateTime publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public DateTime getBorrowedDate() {
+        return borrowedDate;
+    }
+
+    public void setBorrowedDate(DateTime borrowedDate) {
+        this.borrowedDate = borrowedDate;
+    }
+
+    public Reader getCurrentReader() {
+        return currentReader;
+    }
+
+    public void setCurrentReader(Reader currentReader) {
+        this.currentReader = currentReader;
+    }
+
+
+    @Override
+    public String toString() {
+        return "LibraryItem{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", sector='" + sector + '\'' +
+                ", publishDate='" + publishDate + '\'' +
+                ", borrowedDate='" + borrowedDate + '\'' +
+                ", currentReader='" + currentReader + '\'' +
+                '}';
+    }
+}
+
+=======================================================================================================================
+This is the Book class
+=======================================================================================================================
+import java.util.ArrayList;
+import java.util.List;
+
+public class Book extends LibraryItem {
+
+    private Author author;
+    private Publisher publisher;
+    private int totalNumberofPages;
+
+    static List<Book> bookDetails = new ArrayList<>();
+
+//this constructor is used to pass data to
+    public Book(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader,
+                String itemType, Author author, Publisher publisher, int totalNumberofPages) {
+        super(isbn, title, sector, publishDate, borrowedDate, currentReader, itemType);
+        this.author = author;
+        this.publisher = publisher;
+        this.totalNumberofPages = totalNumberofPages;
+    }
+
+    static int getBookCount(){
+        return bookDetails.size();
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getTotalNumberofPages() {
+        return totalNumberofPages;
+    }
+
+    public void setTotalNumberofPages(int totalNumberofPages) {
+        this.totalNumberofPages = totalNumberofPages;
+    }
+
+//methods related to DVD
+  //to store dvd data
+    public static void storeBookDetails(Book obj){
+
+        if(bookDetails.size()<100){
+            bookDetails.add(obj);
+        }else{
+            System.out.println("NO space to store more Books");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Book : " +
+                "\n Type                   = " + itemType +
+                "\n Title                  = " + title +
+                "\n ISBN                   = " + isbn +
+                "\n Author                 = " + author +
+                "\n Publisher              = " + publisher +
+                "\n Total Number of Pages  = " + totalNumberofPages +
+                "\n Sector                 = " + sector +
+                "\n Publish Date           = " + publishDate  +
+                "\n Borrowed Date          = " + borrowedDate  +
+                "\n Current Reader         = " + currentReader +
+                '\n'+'\n';
+    }
+
+
+}
+
+
+=======================================================================================================================
+This is the Dvd class
+=======================================================================================================================
+import java.util.ArrayList;
+import java.util.List;
+
+public class Dvd extends LibraryItem {
+
+    private String language;
+    private String subtitles;
+    private Creator producer;
+    private String actors;
+
+    static List<Dvd> DvdData = new ArrayList<>();
+
+    public Dvd(String isbn, String title, String sector, DateTime publishDate, DateTime borrowedDate, Reader currentReader,
+               String itemType, String language, String subtitles, Creator producer, String actors) {
+        super(isbn, title, sector, publishDate, borrowedDate, currentReader, itemType);
+        this.language = language;
+        this.subtitles = subtitles;
+        this.producer = producer;
+        this.actors = actors;
+    }
+
+    public static int getDvdcount(){
+        return DvdData.size();
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getSubtitles() {
+        return subtitles;
+    }
+
+    public void setSubtitles(String subtitles) {
+        this.subtitles = subtitles;
+    }
+
+    public Creator getProducer() {
+        return producer;
+    }
+
+    public void setProducer(Creator producer) {
+        this.producer = producer;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+//methods related to DVD
+    //to store dvd data
+
+    public static void storedvdData(Dvd obj){
+
+        if(DvdData.size()<50){
+            DvdData.add(obj);
+        }else{
+            System.out.println("NO space to store more DVDs");
+        }
+    }
+
+    @Override
+    public String toString() {
+
+        return  "Dvd : "  +
+                "\n Type           = " + itemType +
+                "\n Title          = " + title +
+                "\n ISBN           = " + isbn  +
+                "\n Language       = " + language  +
+                "\n Subtitles      = " + subtitles  +
+                "\n Producer       = " + producer  +
+                "\n Actors         = " + actors  +
+                "\n Sector         = " + sector +
+                "\n Publish Date   = " + publishDate +
+                "\n Borrowed Date  = " + borrowedDate +
+                "\n Current Reader = " + currentReader +"\n \n";
+    }
+}
+
+
+=======================================================================================================================
+This is the Person class
+=======================================================================================================================
+public class Person {
+
+    String fname;
+    String lname;
+    int age;
+
+    public Person(String fname, String lname, int age) {
+        this.fname = fname;
+        this.lname = lname;
+        this.age = age;
+    }
+
+//bno args constructor
+    public Person() {
+    }
+//getters and setters
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+=======================================================================================================================
+This is the Publisher class
+=======================================================================================================================
+public class Publisher extends Person {
+
+    int pubisherId;
+    String company;
+
+    public Publisher(int pubisherId, String company) {
+        this.pubisherId = pubisherId;
+        this.company = company;
+    }
+
+    public int getPubisherId() {
+        return pubisherId;
+    }
+
+    public void setPubisherId(int pubisherId) {
+        this.pubisherId = pubisherId;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "pubisherId=" + pubisherId +
+                ", company='" + company + '\'' +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+=======================================================================================================================
+This is the Author class
+=======================================================================================================================
+public class Author extends Person {
+
+    int authorId;
+
+    public Author(String fname, String lname, int age, int authorId) {
+        super(fname, lname, age);
+        this.authorId = authorId;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+=======================================================================================================================
+This is the Creator class
+=======================================================================================================================
+public class Creator extends Person {
+
+    int creatorId;
+
+    public Creator(String fname, String lname, int age, int creatorId) {
+        super(fname, lname, age);
+        this.creatorId = creatorId;
+    }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    @Override
+    public String toString() {
+        return "Creator{" +
+                "creatorId=" + creatorId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+
+=======================================================================================================================
+This is the Reader class
+=======================================================================================================================
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+public class Reader {
+
+    private int id;
+    private String name;
+    private int mobileNumber;
+    private String email;
+
+    static List<Reader> readerDetails = new ArrayList<>();
+
+    public Reader(int id, String name, int mobileNumber, String email) {
+        this.id = id;
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+        this.email = email;
+
+    }
+
+    static int getNoofReaders(){
+        return readerDetails.size();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(int mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public static void storeReaderDetails(Reader obj){
+        readerDetails.add(obj);
+    }
+
+    @Override
+    public String toString() {
+        return "Reader : " +
+                "\n Id            = " + id +
+                "\n Name          = " + name  +
+                "\n Mobile Number = 0" + mobileNumber +
+                "\n Email         = " + email +"\n \n";
+    }
+}
+
+
+=======================================================================================================================
+This is the DateTime class
+=======================================================================================================================
+public class DateTime {
+
+    private int day;
+    private int month;
+    private int year;
+
+    public DateTime(int day,int month,int year){
+        this.day=day;
+        this.month=month;
+        this.year=year;
+    }
+
+    public int getDay() {
+        return this.day;
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public void setDate(int day,int month,int year){
+        this.day=day;
+        this.month=month;
+        this.year=year;
+    }
+
+    public String getDate(){
+        return "Day :- "+this.day+" Month :- "+this.month+" Year :- "+this.year;
+    }
+
+    @Override
+    public String toString() {
+        return "Date{" +
+                "day=" + day +
+                ", month=" + month +
+                ", year=" + year +
+                '}';
+    }
+
+}
+
+
+=======================================================================================================================
+This is the LibraryManager class
+=======================================================================================================================
+public interface LibraryManager {
+
+//methods for main functions in library
+    static void addItem(){}
+    static void deleteItem(){}
+    static void listItem(){}
+    static void borrowItem(){}
+    static void returnItem(){}
+    static void generateReport(){}
+
+//methods to add books, dvd, publisher, dates, authors etc.
+    void addBookInfo();
+    void addDvdInfo();
+    void addPublisher();
+    void addAuther();
+    void addCreator();
+    void addReader();
+
+}
+
+
+=======================================================================================================================
+This is the WestminsterLibraryManager class
+=======================================================================================================================
+
+import java.util.Scanner;
+
+public class WestminsterLibraryManager implements LibraryManager {
+
+    int libraryId;
+    String libraryName;
+    String location;
+
+    public WestminsterLibraryManager(int libraryId, String libraryName, String location) {
+        this.libraryId = libraryId;
+        this.libraryName = libraryName;
+        this.location = location;
+    }
+
+//main menu handlers
+    public static void addItem() {
+        System.out.println("Select item Type");
+        System.out.println("---------------------");
+        System.out.println("1. Book");
+        System.out.println("2. DVD");
+        System.out.println("3. Main Menu");
+        System.out.println("4. Exit");
+        System.out.println("---------------------");
+        System.out.print("Command: ");
+        Scanner input = new Scanner(System.in);
+        String command = input.next();
+        System.out.println();
+
+        Reader reader1 = new Reader(1, "Vikum", 773025658, "vikumkbv@gmail.com");
+        Reader reader2 = new Reader(2,"Charith", 757803021, "charith@gmail.com");
+        Reader reader3 = new Reader(3, "Sashika", 775689745, "sashikassn@gmail.com");
+        Reader reader4 = new Reader(4,"Danushka", 773024562, "danuwa@gmail.com");
+        //Add readers to list
+
+        Reader.storeReaderDetails(reader1);
+        Reader.storeReaderDetails(reader2);
+        Reader.storeReaderDetails(reader3);
+        Reader.storeReaderDetails(reader4);
+
+        //Creator information
+        Creator creator1 = new Creator("chamath", "asela", 24, 100);
+        Creator creator2 = new Creator("sashika", "sandeepana", 24, 101);
+
+        //Details needed for books
+        DateTime book5publisherDate1 = new DateTime(12,5,2018);
+        DateTime borroeDate1 = new DateTime(30, 6,2018);
+        Author authorDetails1 = new Author("saman", "perera", 35, 1);
+        Publisher publisherDetails1 = new Publisher(100, "sarasavi publication");
+
+        DateTime book5publisherDate2 = new DateTime(12,5,2018);
+        DateTime borrowDate2 = new DateTime(30, 6,2018);
+        Author authorDetails2 = new Author("wilbert", "wickaramaarachi", 35, 4);
+        Publisher publisherDetails2 = new Publisher(100, "Gunasekara publication");
+
+        switch (command) {
+            case "1":
+                //add things to add book info
+
+
+                Book book1 = new Book("ISBN175395","UML Design","IT", book5publisherDate1,
+                        borroeDate1,reader1,"Book", authorDetails1, publisherDetails1, 650);
+                Book book2 = new Book("ISBN175652","Accounting Basics","Accounting", book5publisherDate2,
+                        borrowDate2,reader2,"Book", authorDetails2, publisherDetails2, 650);
+
+                //Add book information to list
+                Book.storeBookDetails(book1);
+                Book.storeBookDetails(book2);
+                System.out.println("Book data added successfully");
+                addItem();
+                break;
+
+            case "2":
+                //add things to add dvd info
+                Dvd dvd1 = new Dvd("DVD45619", "Java Fundermentals", "IT",book5publisherDate1,
+                        borroeDate1, reader1, "DVD", "English",
+                        "Sinhala",creator1,"screen recording");
+
+                Dvd dvd2 = new Dvd("DVD45719", "Web Fundermentals", "WEB",book5publisherDate1,
+                        borroeDate1, reader1, "DVD", "English",
+                        "Sinhala",creator1,"Screen + Video");
+
+                //Add data to dvd array list
+                Dvd.storedvdData(dvd1);
+                Dvd.storedvdData(dvd2);
+                System.out.println("DVD data added successfully");
+                addItem();
+                break;
+
+            case "3":
+                //add a method to go to main menu
+                Test.mainMenu();
+                break;
+
+            case "4":
+                System.out.println(".:: Programme Exist ::.");
+                System.exit(1);
+                break;
+
+            default:
+                System.out.println("Invalid Command, Try again");
+                WestminsterLibraryManager.addItem();
+                break;
+        }
+
+    }
+
+
+    public static void deleteItem() {
+        System.out.println("Book with ISBN  " +Book.bookDetails.get(0).isbn + " deleting");
+        System.out.println("DVD with ISBN  " +Dvd.DvdData.get(0).isbn + " deleting");
+
+        Book.bookDetails.remove(0);
+        Dvd.DvdData.remove(0);
+
+        System.out.println("1 book and 1 dvd removed");
+        Test.mainMenu();
+
+
+    }
+
+    public static void borrowItem() {
+
+        System.out.println("this is borrow menu");
+        Test.mainMenu();
+    }
+
+
+    public static void returnItem() {
+
+        System.out.println("this is return menu");
+        Test.mainMenu();
+    }
+
+
+    public static void listItem() {
+
+        System.out.println("   --- DVD INFORMATION ---     ");
+        System.out.println("__________________________________\n");
+        System.out.println(Dvd.DvdData.toString());
+
+        System.out.println("\n__________________________________");
+        System.out.println("   --- BOOK INFORMATION ---     ");
+        System.out.println("__________________________________\n");
+        System.out.println(Book.bookDetails.toString());
+
+        System.out.println("\n__________________________________");
+        System.out.println("   --- READERS INFORMATION ---    ");
+        System.out.println("__________________________________\n");
+        System.out.println(Reader.readerDetails.toString());
+
+        Test.mainMenu();
+    }
+
+    public static void generateReport() {
+
+        System.out.println("this is report generation");
+        System.out.println("   --- DVD INFORMATION ---     ");
+        System.out.println("__________________________________\n");
+        System.out.println(Dvd.DvdData.toString());
+
+        System.out.println("\n__________________________________");
+        System.out.println("   --- BOOK INFORMATION ---     ");
+        System.out.println("__________________________________\n");
+        System.out.println(Book.bookDetails.toString());
+
+        System.out.println("\n__________________________________");
+        System.out.println("   --- READERS INFORMATION ---    ");
+        System.out.println("__________________________________\n");
+        System.out.println(Reader.readerDetails.toString());
+        Test.mainMenu();
+    }
+
+//basic supporting functions
+
+
+    @Override
+    public void addBookInfo() {
+
+    }
+
+    @Override
+    public void addDvdInfo() {
+
+    }
+
+    @Override
+    public void addReader() {
+
+    }
+
+    @Override
+    public void addAuther() {
+
+    }
+
+    @Override
+    public void addCreator() {
+
+    }
+
+    @Override
+    public void addPublisher() {
+
+    }
+}
+
+=======================================================================================================================
+This is the Test class
+=======================================================================================================================
+
+import org.jcp.xml.dsig.internal.dom.DOMPGPData;
+
+import java.nio.file.WatchEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Test {
+
+    public static void welcome(){
+        System.out.println("__________________________________");
+        System.out.println("     Welcome to library system    ");
+        System.out.println("__________________________________");
+    }
+    // ******************* Main programme ****************
+    public static void mainMenu(){
+
+        welcome();
+        
+        System.out.println("__________________________________");
+        System.out.println("Library Capacity         : " + (+Book.getBookCount() + Dvd.getDvdcount()) + "/150\n");
+        System.out.println("Total Number of Books   : " + Book.getBookCount() + "/100");
+        System.out.println("Total Number of DVDs    : " + Dvd.DvdData.size() + "/50" + "\n");
+        System.out.println("Total Number of Readers : " + Reader.getNoofReaders());
+        System.out.println("__________________________________\n");
+
+        System.out.println("------------------------------------");
+        System.out.println("Select menu item");
+        System.out.println("------------------------------------");
+        System.out.println("1. Add Item");
+        System.out.println("2. Remove Item");
+        System.out.println("3. List Items");
+        System.out.println("4. Borrow Items");
+        System.out.println("5. Return Items");
+        System.out.println("6. Generate Report");
+        System.out.println("7. Exit");
+        System.out.println("------------------------------------");
+        System.out.print("Command: ");
+        Scanner input = new Scanner(System.in);
+        String command = input.next();
+        System.out.println();
+        switch (command) {
+            case "1":
+                //add things to add book info
+                WestminsterLibraryManager.addItem();
+                break;
+
+            case "2":
+                //add things to add dvd info
+                WestminsterLibraryManager.deleteItem();
+                break;
+
+            case "3":
+                //method to list items
+                WestminsterLibraryManager.listItem();
+                break;
+
+            case "4":
+                //method to borrow items
+                WestminsterLibraryManager.borrowItem();
+                break;
+
+            case "5":
+                WestminsterLibraryManager.returnItem();
+                break;
+
+            case "6":
+                WestminsterLibraryManager.returnItem();
+                break;
+
+            case "7":
+                System.out.println(".:: Programme Exist ::.");
+                System.exit(1);
+                break;
+
+            default:
+                System.out.println("Invalid Command, Try again");
+                mainMenu();
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+
+    // ******************* Main programme ****************
+        mainMenu();
+}
+}
