@@ -10,6 +10,10 @@ public class Person {
         this.age = age;
     }
 
+//bno args constructor
+    public Person() {
+    }
+//getters and setters
     public String getFname() {
         return fname;
     }

@@ -1,10 +1,11 @@
 public class Publisher extends Person {
 
     int pubisherId;
+    String company;
 
-    public Publisher(String fname, String lname, int age, int pubisherId) {
-        super(fname, lname, age);
+    public Publisher(int pubisherId, String company) {
         this.pubisherId = pubisherId;
+        this.company = company;
     }
 
     public int getPubisherId() {
@@ -15,10 +16,19 @@ public class Publisher extends Person {
         this.pubisherId = pubisherId;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
                 "pubisherId=" + pubisherId +
+                ", company='" + company + '\'' +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", age=" + age +

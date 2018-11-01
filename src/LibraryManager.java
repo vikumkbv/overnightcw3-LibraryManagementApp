@@ -1,15 +1,19 @@
 public interface LibraryManager {
 
-    void addItem();
+//methods for main functions in library
+    static void addItem(){}
+    static void deleteItem(){}
+    static void listItem(){}
+    static void borrowItem(){}
+    static void returnItem(){}
+    static void generateReport(){}
 
-    void deleteItem();
-
-    void listItem();
-
-    void borrowItem();
-
-    void returnItem();
-
-    void generateReport();
+//methods to add books, dvd, publisher, dates, authors etc.
+    void addBookInfo();
+    void addDvdInfo();
+    void addPublisher();
+    void addAuther();
+    void addCreator();
+    void addReader();
 
 }
